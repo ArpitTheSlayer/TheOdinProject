@@ -1,0 +1,26 @@
+* {
+  font-family: "Comic Sans MS", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  background-color: blue;
+}
+
+img {
+  width: 350px;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+  display: block;
+  margin: auto;
+  padding: 10px 20px;
+}

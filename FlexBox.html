@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Box</title>
+    <style>
+      .main-container {
+        border: 5px solid black;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .container {
+        border: 5px solid red;
+        display: flex;
+        gap: 10px;
+      }
+
+      .item .subitem {
+        display: flex;
+        gap: 10px;
+      }
+
+      .subitem {
+        border: 5px solid green;
+        flex: 1;
+        padding: 50px;
+      }
+
+      .item {
+        border: 5px solid blue;
+        flex: 1;
+        padding: 50px;
+      }
+
+      .item1 {
+        border: 5px solid blue;
+        flex: 2;
+        padding: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="container">
+        <div class="item"></div>
+        <div class="item">
+          <div class="subitem"></div>
+          <div class="subitem"></div>
+        </div>
+        <div class="item"></div>
+      </div>
+
+      <div class="container">
+        <div class="item"></div>
+        <div class="item">
+          <div class="subitem"></div>
+          <div class="subitem"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="item1"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item1"></div>
+      </div>
+    </div>
+  </body>
+</html>
