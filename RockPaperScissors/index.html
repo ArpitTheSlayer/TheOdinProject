@@ -7,16 +7,42 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>Rock, Paper, Scissors</h1>
-    <p>Make a choice:</p>
-    <a href="./page2.html"
-      ><img src="./images/rock.png" alt="Rock" onclick="choice('Rock')" />
-      <img src="./images/paper.png" alt="Paper" onclick="choice('Paper')" />
-      <img
-        src="./images/scissors.png"
-        alt="Scissors"
-        onclick="choice('Scissors')"
-    /></a>
+    <div class="main">
+      <h1>Rock, Paper, Scissors</h1>
+      <div id="section1">
+        <p>Make a choice:</p>
+        <img
+          src="./images/rock.png"
+          alt="Rock"
+          onclick="playerChoice('Rock')"
+        />
+        <img
+          src="./images/paper.png"
+          alt="Paper"
+          onclick="playerChoice('Paper')"
+        />
+        <img
+          src="./images/scissors.png"
+          alt="Scissors"
+          onclick="playerChoice('Scissors')"
+        />
+      </div>
+      <div id="section2">
+        <div>
+          <p>Your Choice:</p>
+          <img id="pchoice" src="./images/rock.png" alt="Rock" />
+        </div>
+        <span>VS</span>
+        <div>
+          <p>Computer Choice:</p>
+          <img id="cchoice" src="./images/rock.png" alt="Rock" />
+        </div>
+      </div>
+      <div id="section3">
+        <p id="result"></p>
+        <button onclick="retry()">Retry</button>
+      </div>
+    </div>
   </body>
   <script src="./script.js"></script>
 </html>

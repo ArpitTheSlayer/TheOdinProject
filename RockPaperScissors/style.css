@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: linear-gradient(to right, red, blue);
+  color: white;
+  font-family: "Comic Sans MS";
+}
+
+h1 {
+  font-size: 70px;
+  text-align: center;
+}
+
+img {
+  width: 200px;
+  height: auto;
+}
+
+.main {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  width: 50%;
+  margin: 100px auto;
+  padding: 50px;
+}
+
+#section1 {
+  text-align: center;
+  padding: 30px;
+}
+
+#section1 img {
+  padding: 30px;
+}
+
+#section2 {
+  display: none;
+  gap: 50px;
+  padding: 30px;
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#section1 p,
+#section2 p {
+  font-size: 30px;
+  padding-bottom: 30px;
+}
+
+span {
+  font-size: 100px;
+}
+
+#section3 {
+  display: none;
+  font-size: 30px;
+  text-align: center;
+}
+
+#section3 button {
+  border: none;
+  border-radius: 10px;
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: blue;
+  color: white;
+  font-size: 30px;
+}
+
+@media (max-width: 500px) {
+  .main {
+    padding: 25px;
+  }
+  h1 {
+    font-size: 35px;
+  }
+
+  img {
+    width: 50px;
+  }
+
+  #section1 {
+    padding: 15px;
+  }
+
+  #section1 img {
+    padding: 15px;
+  }
+
+  #section1 p,
+  #section2 p {
+    font-size: 15px;
+  }
+  span {
+    font-size: 30px;
+  }
+
+  #section3 {
+    font-size: 15px;
+  }
+
+  #section3 button {
+    font-size: 15px;
+  }
+}
