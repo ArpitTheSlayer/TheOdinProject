@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #22092C;
+  font-family: "Comic Sans MS";
+}
+
+.top {
+  background-color: #872341;
+  color: #eeeeee;
+  font-size: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+.main {
+  background-color: #BE3144;
+  color: #eeeeee;
+  width: 300px;
+  margin: 100px auto;
+  padding: 50px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.main label{
+    display: block;
+}
+
+.main input{
+    border: none;
+    font-family: 'Comic Sans MS';
+    margin: 20px 0px;
+    width: 280px;
+    background-color: #22092C;
+    color: #eeeeee;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.main button{
+    background-color: #F05941;
+    color: #eeeeee;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+}
