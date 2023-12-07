@@ -52,3 +52,28 @@ body {
     border-radius: 10px;
     font-size: 20px;
 }
+
+@media (max-width: 425px) {
+  .top{
+    font-size: 10px;
+    padding: 10px;
+  }
+
+  .main{
+    width: 150px;
+    padding: 25px;
+    font-size: 10px;
+  }
+
+  .main input{
+    margin: 10px 0px;
+    width: 140px;
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  .main button{
+    padding: 5px;
+    font-size: 10px;
+  }
+}
