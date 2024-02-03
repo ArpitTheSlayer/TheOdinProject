@@ -1,0 +1,16 @@
+#container {
+  display: flex;
+  width: 900px;
+  height: 900px;
+}
+
+#container > div {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+#container > div > div {
+  border: 1px solid black;
+  flex-grow: 1;
+}
