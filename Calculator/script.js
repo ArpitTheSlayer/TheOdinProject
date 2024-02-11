@@ -15,20 +15,41 @@ function divide(a, b) {
 }
 
 function operate(displayValue) {
-  console.log(displayValue);
-  let [a, operator, b] = displayValue.split(" ");
-  a = +a;
-  b = +b;
-  switch (operator) {
-    case "+":
-      return add(a, b);
-    case "-":
-      return subtract(a, b);
-    case "*":
-      return multiply(a, b);
-    case "/":
-      return divide(a, b).toFixed(2);
+  let values = displayValue.split(" ");
+  let a,
+    operator,
+    b,
+    result = 0;
+  for (let i = 0; i < values.length; i += 2) {
+    if (i === 0) {
+      [a, operator, b] = [values[i], values[i + 1], values[i + 2]];
+    } else {
+      [a, operator, b] = [result, values[i + 1], values[i + 2]];
+    }
+    a = +a;
+    b = +b;
+    switch (operator) {
+      case "+":
+        result = add(a, b);
+        break;
+      case "-":
+        result = subtract(a, b);
+        break;
+      case "*":
+        result = multiply(a, b);
+        break;
+      case "/":
+        result = divide(a, b);
+        break;
+    }
   }
+  if (Math.floor(result) !== result) {
+    result = result.toFixed(10);
+  }
+  if (values.at(-1) === "") {
+    return `${result} ${values.at(-2)} `;
+  }
+  return result;
 }
 
 function showInput(button) {
@@ -44,7 +65,7 @@ function showInput(button) {
   } else if (button === "=") {
     displayValue = display.textContent;
     display.textContent = operate(displayValue);
-  } else {
+  } else if (button === "clear") {
     display.textContent = "";
     displayValue = "";
   }
