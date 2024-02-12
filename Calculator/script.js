@@ -43,6 +43,9 @@ function operate(displayValue) {
         break;
     }
   }
+  if (!isFinite(result)) {
+    return "Don't you know basic maths!";
+  }
   if (Math.floor(result) !== result) {
     result = result.toFixed(10);
   }
@@ -53,6 +56,10 @@ function operate(displayValue) {
 }
 
 function showInput(button) {
+  if (display.textContent.includes("D")) {
+    display.textContent = "";
+    displayValue = "";
+  }
   if (button >= 0 && button <= 9) {
     display.textContent += button;
   } else if (
@@ -65,7 +72,7 @@ function showInput(button) {
   } else if (button === "=") {
     displayValue = display.textContent;
     display.textContent = operate(displayValue);
-  } else if (button === "clear") {
+  } else if (button === "C") {
     display.textContent = "";
     displayValue = "";
   }
