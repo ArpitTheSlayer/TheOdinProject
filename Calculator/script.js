@@ -1,3 +1,91 @@
+const displayResult = document.querySelector("#result");
+const currentOperator = document.querySelector("#current-operator");
+const currentOperand = document.querySelector("#current-operand");
+const buttonContainer = document.querySelector("#button-container");
+let previousValue = "";
+let nextValue = "";
+let result = 0;
+let isEqualPressed = false;
+
+buttonContainer.addEventListener("click", (e) => showInput(e.target));
+
+function showInput(button) {
+  if (
+    !isEqualPressed &&
+    (button.id === "operand" || button.id === "zero" || button.id === "dot")
+  ) {
+    if (button.id === "dot" && !currentOperand.textContent.includes(".")) {
+      currentOperand.textContent += button.textContent;
+    } else if (button.id !== "dot") {
+      currentOperand.textContent += button.textContent;
+    }
+  }
+  if (
+    button.id === "operator" &&
+    isEqualPressed &&
+    displayResult.textContent !== ""
+  ) {
+    isEqualPressed = false;
+    currentOperator.textContent = button.textContent;
+  } else if (button.id === "operator") {
+    isEqualPressed = false;
+    if (currentOperand.textContent !== "") {
+      displayResult.textContent = currentOperand.textContent;
+      operate(currentOperator);
+      currentOperand.textContent = "";
+    }
+    currentOperator.textContent = button.textContent;
+  } else if (button.id === "equal") {
+    isEqualPressed = true;
+    operate(currentOperator);
+    currentOperator.textContent = "";
+    currentOperand.textContent = "";
+  }
+  if (button.id === "clear") {
+    previousValue = "";
+    nextValue = "";
+    isEqualPressed = false;
+    displayResult.textContent = "";
+    currentOperator.textContent = "";
+    currentOperand.textContent = "";
+  }
+  if (button.id === "delete") {
+    currentOperand.textContent = currentOperand.textContent.slice(0, -1);
+  }
+}
+
+function operate(button) {
+  if (previousValue === "") {
+    previousValue = currentOperand.textContent;
+  } else {
+    nextValue = currentOperand.textContent;
+    switch (button.textContent) {
+      case "+":
+        result = add(+previousValue, +nextValue);
+        break;
+      case "-":
+        result = subtract(+previousValue, +nextValue);
+        break;
+      case "*":
+        result = multiply(+previousValue, +nextValue);
+        break;
+      case "/":
+        result = divide(+previousValue, +nextValue);
+        break;
+    }
+    if (!isFinite(result)) {
+      displayResult.textContent = "Don't you know basic maths!";
+    } else if (result.toString().split(".")[1].length > 5) {
+      result = result.toFixed(5);
+      previousValue = result;
+      displayResult.textContent = result;
+    } else {
+      previousValue = result;
+      displayResult.textContent = result;
+    }
+  }
+}
+
 function add(a, b) {
   return a + b;
 }
@@ -13,75 +101,3 @@ function multiply(a, b) {
 function divide(a, b) {
   return a / b;
 }
-
-function operate(displayValue) {
-  let values = displayValue.split(" ");
-  let a,
-    operator,
-    b,
-    result = 0;
-  for (let i = 0; i < values.length; i += 2) {
-    if (i === 0) {
-      [a, operator, b] = [values[i], values[i + 1], values[i + 2]];
-    } else {
-      [a, operator, b] = [result, values[i + 1], values[i + 2]];
-    }
-    a = +a;
-    b = +b;
-    switch (operator) {
-      case "+":
-        result = add(a, b);
-        break;
-      case "-":
-        result = subtract(a, b);
-        break;
-      case "*":
-        result = multiply(a, b);
-        break;
-      case "/":
-        result = divide(a, b);
-        break;
-    }
-  }
-  if (!isFinite(result)) {
-    return "Don't you know basic maths!";
-  }
-  if (Math.floor(result) !== result) {
-    result = result.toFixed(10);
-  }
-  if (values.at(-1) === "") {
-    return `${result} ${values.at(-2)} `;
-  }
-  return result;
-}
-
-function showInput(button) {
-  if (display.textContent.includes("D")) {
-    display.textContent = "";
-    displayValue = "";
-  }
-  if (button >= 0 && button <= 9) {
-    display.textContent += button;
-  } else if (
-    button === "+" ||
-    button === "-" ||
-    button === "*" ||
-    button === "/"
-  ) {
-    display.textContent += ` ${button} `;
-  } else if (button === "=") {
-    displayValue = display.textContent;
-    display.textContent = operate(displayValue);
-  } else if (button === "C") {
-    display.textContent = "";
-    displayValue = "";
-  }
-}
-
-const display = document.querySelector("#display");
-const buttonContainer = document.querySelector("#button-container");
-let displayValue = "";
-
-buttonContainer.addEventListener("click", (e) =>
-  showInput(e.target.textContent)
-);

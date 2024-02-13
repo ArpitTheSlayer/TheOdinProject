@@ -4,48 +4,95 @@
 }
 
 body {
-  background-color: #070f2b;
+  background-color: #010101;
 }
 
 #main-container {
-  background-color: #535c91;
+  background-color: #e0f5f5;
   width: 500px;
-  margin: 100px auto;
+  margin: 162px auto;
   padding: 10px;
+  border-radius: 10px;
 }
 
 #display {
-  background-color: #1b1a55;
-  color: #4f4ceb;
+  background-color: #369093;
   font-size: 40px;
-  padding: 10px;
-  min-height: 50px;
+  min-height: 100px;
   text-align: right;
-  margin-bottom: 10px;
   overflow-wrap: break-word;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#result {
+  min-height: 47px;
+  color: #c1c23c;
+}
+
+#current-content {
+  color: #f9f871;
+  display: flex;
+  justify-content: space-between;
+}
+
+#current-operand {
+  overflow-wrap: break-word;
+  max-width: 450px;
 }
 
 #button-container {
-  background-color: #1b1a55;
-  padding: 40px;
+  background-color: #369093;
   display: flex;
   flex-wrap: wrap;
-  gap: 70px;
-  justify-content: space-around;
+  gap: 30px;
+  justify-content: space-between;
+  padding: 30px;
+  border-radius: 10px;
 }
 
 button {
-  background-color: #7f27ff;
-  color: white;
+  background-color: #171717;
   font-size: 30px;
   border: none;
-  border-radius: 100%;
-  min-width: 50px;
-  min-height: 50px;
+  border-radius: 20px;
+  color: #fafafa;
+  min-width: 80px;
+  min-height: 80px;
 }
 
 button:hover,
 button:active {
-  background-color: #9f70fd;
-  font-size: 40px;
+  font-size: 25px;
+  outline: 3px solid #e0f5f5;
+}
+
+#equal {
+  background-color: #00c9d6;
+  flex: 1;
+  border-radius: 20px;
+}
+
+#delete {
+  flex: 1;
+  border-radius: 20px;
+}
+
+#operand,
+#zero {
+  background-color: #005155;
+}
+
+#dot {
+  background-color: #324b4c;
+}
+
+#operator {
+  background-color: #a73a00;
+}
+
+#clear,
+#delete {
+  background-color: #ff8847;
 }
