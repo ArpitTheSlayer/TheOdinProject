@@ -75,14 +75,15 @@ function operate(button) {
     }
     if (!isFinite(result)) {
       displayResult.textContent = "Don't you know basic maths!";
-    } else if (result.toString().split(".")[1].length > 5) {
+      return;
+    } else if (
+      result.toString().includes(".") &&
+      result.toString().split(".")[1].length > 5
+    ) {
       result = result.toFixed(5);
-      previousValue = result;
-      displayResult.textContent = result;
-    } else {
-      previousValue = result;
-      displayResult.textContent = result;
     }
+    previousValue = result;
+    displayResult.textContent = result;
   }
 }
 
