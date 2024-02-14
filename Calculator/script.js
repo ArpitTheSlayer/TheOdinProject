@@ -6,14 +6,40 @@ let previousValue = "";
 let nextValue = "";
 let result = 0;
 let isEqualPressed = false;
+const allPossibleKeysArray = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "+",
+  "-",
+  "*",
+  "/",
+  ".",
+  "=",
+  "Delete",
+  "Backspace",
+];
 
 buttonContainer.addEventListener("click", (e) => showInput(e.target));
+addEventListener("keydown", (e) => keyboardInput(e));
 
 function showInput(button) {
-  if (
-    !isEqualPressed &&
-    (button.id === "operand" || button.id === "zero" || button.id === "dot")
-  ) {
+  if (displayResult.textContent.includes("D")) {
+    previousValue = "";
+    nextValue = "";
+    isEqualPressed = false;
+    displayResult.textContent = "";
+    currentOperator.textContent = "";
+    currentOperand.textContent = "";
+  }
+  if (!isEqualPressed && (button.id === "operand" || button.id === "dot")) {
     if (button.id === "dot" && !currentOperand.textContent.includes(".")) {
       currentOperand.textContent += button.textContent;
     } else if (button.id !== "dot") {
@@ -35,7 +61,12 @@ function showInput(button) {
       currentOperand.textContent = "";
     }
     currentOperator.textContent = button.textContent;
-  } else if (button.id === "equal") {
+  } else if (
+    button.id === "equal" &&
+    displayResult.textContent !== "" &&
+    currentOperand.textContent !== "" &&
+    currentOperator.textContent !== ""
+  ) {
     isEqualPressed = true;
     operate(currentOperator);
     currentOperator.textContent = "";
@@ -51,6 +82,21 @@ function showInput(button) {
   }
   if (button.id === "delete") {
     currentOperand.textContent = currentOperand.textContent.slice(0, -1);
+  }
+}
+
+function keyboardInput(keyboardButton) {
+  if (allPossibleKeysArray.includes(keyboardButton.key)) {
+    buttonContainer.querySelectorAll("button").forEach((button) => {
+      if (button.textContent === keyboardButton.key) {
+        showInput(button);
+      } else if (
+        keyboardButton.key === "Backspace" &&
+        button.textContent === "C"
+      ) {
+        showInput(button);
+      }
+    });
   }
 }
 
